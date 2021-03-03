@@ -23,6 +23,14 @@ Things you may want to cover:
 
 * ...
 
+# shitatsudzumi 画面遷移図
+
+<a href="https://gyazo.com/bfc39383323b8eec3cae6c1af9e9f578"><img src="https://i.gyazo.com/bfc39383323b8eec3cae6c1af9e9f578.png" alt="Image from Gyazo" width="451"/></a>
+
+# shitatsudzumi ER図
+
+<a href="https://gyazo.com/303a0791ecf6f34c092b7dcd043c74d6"><img src="https://i.gyazo.com/303a0791ecf6f34c092b7dcd043c74d6.png" alt="Image from Gyazo" width="794"/></a>
+
 # shitatsudzumi DB設計
 
 ### Usersテーブル
