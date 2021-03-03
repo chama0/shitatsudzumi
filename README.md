@@ -90,7 +90,6 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |image|string|null: false|
-|recipe|references|null: false, foreign_key: true|
 |howtomake|references|null: false, foreign_key: true|
 ### Association
 - belongs_to: howtomake
