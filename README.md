@@ -25,7 +25,7 @@ Things you may want to cover:
 
 # shitatsudzumi 画面遷移図
 
-<a href="https://gyazo.com/bfc39383323b8eec3cae6c1af9e9f578"><img src="https://i.gyazo.com/bfc39383323b8eec3cae6c1af9e9f578.png" alt="Image from Gyazo" width="451"/></a>
+<a href="https://gyazo.com/3d23d9b7a84e412a0bea2a0a8e6d7cb5"><img src="https://i.gyazo.com/3d23d9b7a84e412a0bea2a0a8e6d7cb5.png" alt="Image from Gyazo" width="424"/></a>
 
 # shitatsudzumi ER図
 
