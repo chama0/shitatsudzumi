@@ -16,4 +16,10 @@ class RecipeHowtomake
     end
   end
 
+  def save
+    recipe = Recipe.create(name: name, chach_copy: chach_copy, point: point, upbringing: upbringing, many: many, price: price, user_id: user.id)
+    Material.create(name: name, quantity: quantity, price: price, recipe_id: recipe.id)
+    Donation.create(text: text, recipe_id: recipe.id)
+  end
+
 end
