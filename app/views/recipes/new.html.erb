@@ -6,7 +6,7 @@
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
     <%= form_with model: @recipe_howtomake, url: recipes_path, local: true do |f| %>
-    <% render 'shared/error_messages', model: @recipe_howtomake %>
+    <%= render 'shared/error_messages', model: @recipe_howtomake %>
 
     <%# 料理画像 %>
     <div class="img-upload">
@@ -71,7 +71,7 @@
           材料
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :name, class:"items-text", id:"item-name", placeholder:"例: 牛肉", maxlength:"40" %>
+        <%= f.text_area :material_name, class:"items-text", id:"item-name", placeholder:"例: 牛肉", maxlength:"40" %>
         <div class="weight-bold-text">
           分量
           <span class="indispensable">必須</span>
@@ -81,24 +81,12 @@
           値段
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :price, class:"items-text", id:"item-name", placeholder:"例: 50（半角数字で入力）", maxlength:"40" %>
+        <%= f.text_area :material_price, class:"items-text", id:"item-name", placeholder:"例: 50（半角数字で入力）", maxlength:"40" %>
       </div>
     </div>
     <%# /材料詳細(materialsテーブル用) %>
 
     <%# 作り方(howtomakesテーブル用) %>
-    <div class="img-upload">
-      <div class="weight-bold-text">
-        作り方(写真)
-        <span class="indispensable">必須</span>
-      </div>
-      <div class="click-upload">
-        <p>
-          写真をのせる
-        </p>
-        <%= f.file_field :image, id:"item-image" %>
-      </div>
-    </div>
     <div class="items-explain">
         <div class="weight-bold-text">
           作り方(テキスト)
