@@ -11,8 +11,5 @@ FactoryBot.define do
     material_price { 300 }
     text           { Faker::Food.description }
     association :user
-    after(:build) do |recipe_howtomake|
-      recipe_howtomake.image.attach(io: File.open('public/images/test_image.jpg'), filename: 'test_image.jpg')
-    end
   end
 end
