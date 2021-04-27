@@ -19,8 +19,9 @@ class RecipesController < ApplicationController
   end
 
   private
-  def recipe_params
-    params.require(:recipe_howtomake).permit(:name, :chach_copy, :point, :upbringing, :many, :price, :material_name, :quantity, :material_price, :text, :image, :user_id).merge(user_id: current_user.id)
-  end
 
+  def recipe_params
+    params.require(:recipe_howtomake).permit(:name, :chach_copy, :point, :upbringing, :many, :price, :material_name, :quantity,
+                                             :material_price, :text, :image, :user_id).merge(user_id: current_user.id)
+  end
 end

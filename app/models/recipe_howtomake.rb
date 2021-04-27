@@ -1,6 +1,7 @@
 class RecipeHowtomake
   include ActiveModel::Model
-  attr_accessor :name, :chach_copy, :point, :upbringing, :many, :price, :material_name, :quantity, :material_price, :text, :image, :user_id
+  attr_accessor :name, :chach_copy, :point, :upbringing, :many, :price, :material_name, :quantity, :material_price, :text,
+                :image, :user_id
 
   with_options presence: true do
     validates :name
@@ -20,9 +21,9 @@ class RecipeHowtomake
   end
 
   def save
-    recipe = Recipe.create(name: name, chach_copy: chach_copy, point: point, upbringing: upbringing, many: many, price: price, image: image, user_id: user_id)
+    recipe = Recipe.create(name: name, chach_copy: chach_copy, point: point, upbringing: upbringing, many: many, price: price,
+                           image: image, user_id: user_id)
     Material.create(material_name: material_name, quantity: quantity, material_price: material_price, recipe_id: recipe.id)
     Howtomake.create(text: text, recipe_id: recipe.id)
   end
-
 end

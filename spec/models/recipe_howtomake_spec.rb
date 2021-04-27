@@ -20,7 +20,7 @@ RSpec.describe RecipeHowtomake, type: :model do
         @recipe_howtomake.valid?
         expect(@recipe_howtomake.errors.full_messages).to include("Name can't be blank")
       end
-      
+
       it 'chach_copyが空だと保存できないこと' do
         @recipe_howtomake.chach_copy = nil
         @recipe_howtomake.valid?
@@ -48,25 +48,25 @@ RSpec.describe RecipeHowtomake, type: :model do
       it 'manyが全角数字である場合は保存できないこと' do
         @recipe_howtomake.many = '１１１１'
         @recipe_howtomake.valid?
-        expect(@recipe_howtomake.errors.full_messages).to include("Many is invalid")
+        expect(@recipe_howtomake.errors.full_messages).to include('Many is invalid')
       end
 
       it 'manyが半角英数字混合である場合は保存できないこと' do
         @recipe_howtomake.many = '11aa'
         @recipe_howtomake.valid?
-        expect(@recipe_howtomake.errors.full_messages).to include("Many is invalid")
+        expect(@recipe_howtomake.errors.full_messages).to include('Many is invalid')
       end
 
       it 'manyが半角英語である場合は保存できないこと' do
         @recipe_howtomake.many = 'aaaa'
         @recipe_howtomake.valid?
-        expect(@recipe_howtomake.errors.full_messages).to include("Many is invalid")
+        expect(@recipe_howtomake.errors.full_messages).to include('Many is invalid')
       end
 
       it 'manyが漢数字では保存できないこと' do
         @recipe_howtomake.many = '一二三四'
         @recipe_howtomake.valid?
-        expect(@recipe_howtomake.errors.full_messages).to include("Many is invalid")
+        expect(@recipe_howtomake.errors.full_messages).to include('Many is invalid')
       end
 
       it 'priceが空だと保存できないこと' do
@@ -78,25 +78,25 @@ RSpec.describe RecipeHowtomake, type: :model do
       it 'priceが全角数字である場合は保存できないこと' do
         @recipe_howtomake.price = '１１１１'
         @recipe_howtomake.valid?
-        expect(@recipe_howtomake.errors.full_messages).to include("Price is invalid")
+        expect(@recipe_howtomake.errors.full_messages).to include('Price is invalid')
       end
 
       it 'price半角英数字混合である場合は保存できないこと' do
         @recipe_howtomake.price = '11aa'
         @recipe_howtomake.valid?
-        expect(@recipe_howtomake.errors.full_messages).to include("Price is invalid")
+        expect(@recipe_howtomake.errors.full_messages).to include('Price is invalid')
       end
 
       it 'priceが半角英語である場合は保存できないこと' do
         @recipe_howtomake.price = 'aaaa'
         @recipe_howtomake.valid?
-        expect(@recipe_howtomake.errors.full_messages).to include("Price is invalid")
+        expect(@recipe_howtomake.errors.full_messages).to include('Price is invalid')
       end
 
       it 'priceが漢数字では保存できないこと' do
         @recipe_howtomake.price = '一二三四'
         @recipe_howtomake.valid?
-        expect(@recipe_howtomake.errors.full_messages).to include("Price is invalid")
+        expect(@recipe_howtomake.errors.full_messages).to include('Price is invalid')
       end
 
       it 'material_nameが空だと保存できないこと' do
@@ -120,25 +120,25 @@ RSpec.describe RecipeHowtomake, type: :model do
       it 'material_priceが全角数字である場合は保存できないこと' do
         @recipe_howtomake.material_price = '１１１１'
         @recipe_howtomake.valid?
-        expect(@recipe_howtomake.errors.full_messages).to include("Material price is invalid")
+        expect(@recipe_howtomake.errors.full_messages).to include('Material price is invalid')
       end
 
       it 'material_priceが半角英数字混合である場合は保存できないこと' do
         @recipe_howtomake.material_price = '11aa'
         @recipe_howtomake.valid?
-        expect(@recipe_howtomake.errors.full_messages).to include("Material price is invalid")
+        expect(@recipe_howtomake.errors.full_messages).to include('Material price is invalid')
       end
 
       it 'material_priceが半角英語である場合は保存できないこと' do
         @recipe_howtomake.material_price = 'aaaa'
         @recipe_howtomake.valid?
-        expect(@recipe_howtomake.errors.full_messages).to include("Material price is invalid")
+        expect(@recipe_howtomake.errors.full_messages).to include('Material price is invalid')
       end
 
       it 'material_priceが漢数字では保存できないこと' do
         @recipe_howtomake.material_price = '一二三四'
         @recipe_howtomake.valid?
-        expect(@recipe_howtomake.errors.full_messages).to include("Material price is invalid")
+        expect(@recipe_howtomake.errors.full_messages).to include('Material price is invalid')
       end
 
       it 'textが空だと保存できないこと' do
