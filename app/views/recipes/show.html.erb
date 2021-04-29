@@ -4,33 +4,34 @@
 <div class="item-show">
   <div class="item-box">
     <h2 class="name">
-      <%= "商品名" %>
+      <%= @recipe.name %>
     </h2>
     <div class="item-img-content">
-      <%= image_tag "item-sample.png" ,class:"item-box-img" %>
-      <%# 商品が売れている場合は、sold outを表示しましょう %>
-      <div class="sold-out">
-        <span>Sold Out!!</span>
-      </div>
-      <%# //商品が売れている場合は、sold outを表示しましょう %>
+      <%= image_tag @recipe.image ,class:"item-box-img" %>
     </div>
     <div class="item-price-box">
-      <span class="item-price">
-        ¥ 999,999,999
-      </span>
       <span class="item-postage">
-        <%= "配送料負担" %>
+        <%= @recipe.chach_copy %>
+      </span>
+      <span class="item-price">
+        ¥ <%= @recipe.price %>
       </span>
     </div>
 
     <%# ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
 
-    <%= link_to "商品の編集", "#", method: :get, class: "item-red-btn" %>
-    <p class="or-text">or</p>
-    <%= link_to "削除", "#", method: :delete, class:"item-destroy" %>
+    <% if user_signed_in? %>
+      <% if current_user.id == @recipe.user_id %>
+        <%= link_to "商品の編集", "#", method: :get, class: "item-red-btn" %>
+        <p class="or-text">or</p>
+        <%= link_to "削除", "#", method: :delete, class:"item-destroy" %>
+      <% else %>
+        <%= link_to "購入画面に進む", "#" ,class:"item-red-btn"%>
+      <% end %>
+    <% end %>
 
     <%# 商品が売れていない場合はこちらを表示しましょう %>
-    <%= link_to "購入画面に進む", "#" ,class:"item-red-btn"%>
+    <%#= link_to "購入画面に進む", "#" ,class:"item-red-btn"%>
     <%# //商品が売れていない場合はこちらを表示しましょう %>
 
 
@@ -42,28 +43,32 @@
     <table class="detail-table">
       <tbody>
         <tr>
-          <th class="detail-item">出品者</th>
-          <td class="detail-value"><%= "出品者名" %></td>
+          <th class="detail-item">◯人分</th>
+          <td class="detail-value"><%= @recipe.many %>人分</td>
         </tr>
         <tr>
-          <th class="detail-item">カテゴリー</th>
-          <td class="detail-value"><%= "カテゴリー名" %></td>
+          <th class="detail-item">材料</th>
+          <td class="detail-value"><%= @recipe.material_name %></td>
         </tr>
         <tr>
-          <th class="detail-item">商品の状態</th>
-          <td class="detail-value"><%= "商品の状態" %></td>
+          <th class="detail-item">分量</th>
+          <td class="detail-value"><%= @recipe.quantity %></td>
         </tr>
         <tr>
-          <th class="detail-item">配送料の負担</th>
-          <td class="detail-value"><%= "発送料の負担" %></td>
+          <th class="detail-item">材料費</th>
+          <td class="detail-value"><%= @recipe.material_price %></td>
         </tr>
         <tr>
-          <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= "発送元の地域" %></td>
+          <th class="detail-item">作り方</th>
+          <td class="detail-value"><%= @recipe.text %></td>
         </tr>
         <tr>
-          <th class="detail-item">発送日の目安</th>
-          <td class="detail-value"><%= "発送日の目安" %></td>
+          <th class="detail-item">コツ・ポイント</th>
+          <td class="detail-value"><%= @recipe.point %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">このレシピお生い立ち</th>
+          <td class="detail-value"><%= @recipe.upbringing %></td>
         </tr>
       </tbody>
     </table>
