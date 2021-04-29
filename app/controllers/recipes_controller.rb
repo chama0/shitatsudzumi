@@ -19,6 +19,10 @@ class RecipesController < ApplicationController
     end
   end
 
+  def show
+    @recipe = Recipe.includes(:materials, :howtomakes).find(params[:id])
+  end
+
   private
 
   def recipe_params
