@@ -24,16 +24,13 @@ class RecipesController < ApplicationController
   end
 
   def edit
-    if user_signed_in? && current_user.id != @recipe.user_id
-      redirect_to root_path
-    else
-      render :show
-    end
+    @recipe_howtomake = RecipeHowtomake.new
   end
 
   def update
-    if user_signed_in? && current_user.id != @recipe.update(recipe_params)
-      redirect_to recipe_path
+    @recipe_howtomake = RecipeHowtomake.new(current_user, recipe_params, recipe: @recipe)
+    if @recipe_howtomake.save
+      redirect_to root_path
     else
       render :edit
     end
