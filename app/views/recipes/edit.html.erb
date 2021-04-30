@@ -10,111 +10,93 @@ app/assets/stylesheets/items/new.css %>
     <%= form_with model: @recipe_howtomake, url: recipes_path, local: true do |f| %>
     <%= render 'shared/error_messages', model: f.object %>
 
-    <%# 出品画像 %>
+    <%# 料理画像 %>
     <div class="img-upload">
       <div class="weight-bold-text">
-        出品画像
+        料理画像
         <span class="indispensable">必須</span>
       </div>
       <div class="click-upload">
         <p>
-          クリックしてファイルをアップロード
+          クリックして料理の写真をアップロード
         </p>
-        <%= f.file_field :hoge, id:"item-image" %>
+        <%= f.file_field :image, id:"item-image" %>
       </div>
     </div>
-    <%# /出品画像 %>
-    <%# 商品名と商品説明 %>
+    <%# /料理画像 %>
+
+    <%# レシピ詳細(recipesテーブル用) %>
     <div class="new-items">
       <div class="weight-bold-text">
-        商品名
+        レシピのタイトル
         <span class="indispensable">必須</span>
       </div>
-      <%= f.text_area :hoge, class:"items-text", id:"item-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
+      <%= f.text_area :name, class:"items-text", id:"item-name", placeholder:"レシピのタイトルを入力（必須 40文字まで)", maxlength:"40" %>
+      <div class="weight-bold-text">
+        ◯人分
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :many, class:"items-text", id:"item-name", placeholder:"半角数字で入力（例: 2人分 → 2 と入力）", maxlength:"40" %>
+      <div class="weight-bold-text">
+        この料理の値段
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :price, class:"items-text", id:"item-name", placeholder:"このレシピを作るのにかかる値段を入力（半角数字で入力)", maxlength:"40" %>
       <div class="items-explain">
         <div class="weight-bold-text">
-          商品の説明
+          レシピのキャッチコピー
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :hoge, class:"items-text", id:"item-info", placeholder:"商品の説明（必須 1,000文字まで）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" ,rows:"7" ,maxlength:"1000" %>
+        <%= f.text_area :chach_copy, class:"items-text", id:"item-info", placeholder:"このレシピのキャッチコピーを入力" ,rows:"7" ,maxlength:"1000" %>
       </div>
+      <div class="items-explain">
+        <div class="weight-bold-text">
+          コツ・ポイント
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :point, class:"items-text", id:"item-info", placeholder:"このレシピのコツやポイントを入力" ,rows:"7" ,maxlength:"1000" %>
+      </div>
+      <div class="items-explain">
+        <div class="weight-bold-text">
+          このレシピの生い立ち
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :upbringing, class:"items-text", id:"item-info", placeholder:"このレシピの生い立ちを入力" ,rows:"7" ,maxlength:"1000" %>
     </div>
-    <%# /商品名と商品説明 %>
+    <%# /レシピ詳細(recipesテーブル用) %>
 
-    <%# 商品の詳細 %>
+    <%# 材料詳細(materialsテーブル用) %>
     <div class="items-detail">
-      <div class="weight-bold-text">商品の詳細</div>
+      <div class="weight-bold-text">このレシピの材料</div>
       <div class="form">
         <div class="weight-bold-text">
-          カテゴリー
+          材料
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"item-category"}) %>
+        <%= f.text_area :material_name, class:"items-text", id:"item-name", placeholder:"例: 牛肉", maxlength:"40" %>
         <div class="weight-bold-text">
-          商品の状態
+          分量
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"item-sales-status"}) %>
+        <%= f.text_area :quantity, class:"items-text", id:"item-name", placeholder:"例: 300（半角数字で入力)", maxlength:"40" %>
+                <div class="weight-bold-text">
+          値段
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :material_price, class:"items-text", id:"item-name", placeholder:"例: 50（半角数字で入力）", maxlength:"40" %>
       </div>
     </div>
-    <%# /商品の詳細 %>
+    <%# /材料詳細(materialsテーブル用) %>
 
-    <%# 配送について %>
-    <div class="items-detail">
-      <div class="weight-bold-text question-text">
-        <span>配送について</span>
-        <a class="question" href="#">?</a>
-      </div>
-      <div class="form">
+    <%# 作り方(howtomakesテーブル用) %>
+    <div class="items-explain">
         <div class="weight-bold-text">
-          配送料の負担
+          作り方(テキスト)
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"item-shipping-fee-status"}) %>
-        <div class="weight-bold-text">
-          発送元の地域
-          <span class="indispensable">必須</span>
-        </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"item-prefecture"}) %>
-        <div class="weight-bold-text">
-          発送までの日数
-          <span class="indispensable">必須</span>
-        </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"item-scheduled-delivery"}) %>
-      </div>
+        <%= f.text_area :text, class:"items-text", id:"item-info", placeholder:"作り方をのせる" ,rows:"7" ,maxlength:"1000" %>
     </div>
-    <%# /配送について %>
-
-    <%# 販売価格 %>
-    <div class="sell-price">
-      <div class="weight-bold-text question-text">
-        <span>販売価格<br>(¥300〜9,999,999)</span>
-        <a class="question" href="#">?</a>
-      </div>
-      <div>
-        <div class="price-content">
-          <div class="price-text">
-            <span>価格</span>
-            <span class="indispensable">必須</span>
-          </div>
-          <span class="sell-yen">¥</span>
-          <%= f.text_field :hoge, class:"price-input", id:"item-price", placeholder:"例）300" %>
-        </div>
-        <div class="price-content">
-          <span>販売手数料 (10%)</span>
-          <span>
-            <span id='add-tax-price'></span>円
-          </span>
-        </div>
-        <div class="price-content">
-          <span>販売利益</span>
-          <span>
-            <span id='profit'></span>円
-          </span>
-        </div>
-      </div>
-    </div>
-    <%# /販売価格 %>
+    <%# /作り方(howtomakesテーブル用) %>
 
     <%# 注意書き %>
     <div class="caution">
