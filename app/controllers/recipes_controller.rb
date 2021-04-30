@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :set_recipe, only: [:show, :edit, :update]
 
   def index
     @recipes = Recipe.all.order('created_at DESC')
@@ -20,7 +21,22 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.includes(:materials, :howtomakes).find(params[:id])
+  end
+
+  def edit
+    if user_signed_in? && current_user.id != @recipe.user_id
+      redirect_to root_path
+    else
+      render :show
+    end
+  end
+
+  def update
+    if user_signed_in? && current_user.id != @recipe.update(recipe_params)
+      redirect_to recipe_path
+    else
+      render :edit
+    end
   end
 
   private
@@ -29,4 +45,9 @@ class RecipesController < ApplicationController
     params.require(:recipe_howtomake).permit(:name, :chach_copy, :point, :upbringing, :many, :price, :material_name, :quantity,
                                              :material_price, :text, :image, :user_id).merge(user_id: current_user.id)
   end
+
+  def set_recipe
+    @recipe = Recipe.includes(:materials, :howtomakes).find(params[:id])
+  end
+
 end
