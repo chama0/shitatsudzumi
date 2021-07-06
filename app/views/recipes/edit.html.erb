@@ -1,0 +1,140 @@
+<%# cssは商品出品のものを併用しています。
+app/assets/stylesheets/items/new.css %>
+
+<div class="items-sell-contents">
+  <header class="items-sell-header">
+    <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
+  </header>
+  <div class="items-sell-main">
+    <h2 class="items-sell-title">商品の情報を入力</h2>
+    <%= form_with model: @recipe_howtomake, url: recipes_path, local: true do |f| %>
+    <%= render 'shared/error_messages', model: f.object %>
+
+    <%# 料理画像 %>
+    <div class="img-upload">
+      <div class="weight-bold-text">
+        料理画像
+        <span class="indispensable">必須</span>
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックして料理の写真をアップロード
+        </p>
+        <%= f.file_field :image, id:"item-image" %>
+      </div>
+    </div>
+    <%# /料理画像 %>
+
+    <%# レシピ詳細(recipesテーブル用) %>
+    <div class="new-items">
+      <div class="weight-bold-text">
+        レシピのタイトル
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :name, class:"items-text", id:"item-name", placeholder:"レシピのタイトルを入力（必須 40文字まで)", maxlength:"40" %>
+      <div class="weight-bold-text">
+        ◯人分
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :many, class:"items-text", id:"item-name", placeholder:"半角数字で入力（例: 2人分 → 2 と入力）", maxlength:"40" %>
+      <div class="weight-bold-text">
+        この料理の値段
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :price, class:"items-text", id:"item-name", placeholder:"このレシピを作るのにかかる値段を入力（半角数字で入力)", maxlength:"40" %>
+      <div class="items-explain">
+        <div class="weight-bold-text">
+          レシピのキャッチコピー
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :chach_copy, class:"items-text", id:"item-info", placeholder:"このレシピのキャッチコピーを入力" ,rows:"7" ,maxlength:"1000" %>
+      </div>
+      <div class="items-explain">
+        <div class="weight-bold-text">
+          コツ・ポイント
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :point, class:"items-text", id:"item-info", placeholder:"このレシピのコツやポイントを入力" ,rows:"7" ,maxlength:"1000" %>
+      </div>
+      <div class="items-explain">
+        <div class="weight-bold-text">
+          このレシピの生い立ち
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :upbringing, class:"items-text", id:"item-info", placeholder:"このレシピの生い立ちを入力" ,rows:"7" ,maxlength:"1000" %>
+    </div>
+    <%# /レシピ詳細(recipesテーブル用) %>
+
+    <%# 材料詳細(materialsテーブル用) %>
+    <div class="items-detail">
+      <div class="weight-bold-text">このレシピの材料</div>
+      <div class="form">
+        <div class="weight-bold-text">
+          材料
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :material_name, class:"items-text", id:"item-name", placeholder:"例: 牛肉", maxlength:"40" %>
+        <div class="weight-bold-text">
+          分量
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :quantity, class:"items-text", id:"item-name", placeholder:"例: 300（半角数字で入力)", maxlength:"40" %>
+                <div class="weight-bold-text">
+          値段
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :material_price, class:"items-text", id:"item-name", placeholder:"例: 50（半角数字で入力）", maxlength:"40" %>
+      </div>
+    </div>
+    <%# /材料詳細(materialsテーブル用) %>
+
+    <%# 作り方(howtomakesテーブル用) %>
+    <div class="items-explain">
+        <div class="weight-bold-text">
+          作り方(テキスト)
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :text, class:"items-text", id:"item-info", placeholder:"作り方をのせる" ,rows:"7" ,maxlength:"1000" %>
+    </div>
+    <%# /作り方(howtomakesテーブル用) %>
+
+    <%# 注意書き %>
+    <div class="caution">
+      <p class="sentence">
+        <a href="#">禁止されている出品、</a>
+        <a href="#">行為</a>
+        を必ずご確認ください。
+      </p>
+      <p class="sentence">
+        またブランド品でシリアルナンバー等がある場合はご記載ください。
+        <a href="#">偽ブランドの販売</a>
+        は犯罪であり処罰される可能性があります。
+      </p>
+      <p class="sentence">
+        また、出品をもちまして
+        <a href="#">加盟店規約</a>
+        に同意したことになります。
+      </p>
+    </div>
+    <%# /注意書き %>
+    <%# 下部ボタン %>
+    <div class="sell-btn-contents">
+      <%= f.submit "変更する" ,class:"sell-btn" %>
+      <%=link_to 'もどる', "#", class:"back-btn" %>
+    </div>
+    <%# /下部ボタン %>
+  </div>
+  <% end %>
+
+  <footer class="items-sell-footer">
+    <ul class="menu">
+      <li><a href="#">プライバシーポリシー</a></li>
+      <li><a href="#">フリマ利用規約</a></li>
+      <li><a href="#">特定商取引に関する表記</a></li>
+    </ul>
+    <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
+    <p class="inc">
+      ©︎Furima,Inc.
+    </p>
+  </footer>
+</div>
